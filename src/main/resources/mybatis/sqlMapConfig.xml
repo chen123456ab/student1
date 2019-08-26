@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <settings>
+        <!-- 可以在控制台输出日志信息：sql语句和参数 -->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+    <!--2.设置别名-->
+    <typeAliases>
+        <typeAlias type="java.util.List" alias="list"/>
+        <typeAlias type="java.util.Set" alias="set"/>
+        <!--设置单个的别名-->
+        <!--<typeAlias type="com.k9505.pojo.User" alias="user"></typeAlias>-->
+        <!--配置整个pojo包下所有类的别名-->
+        <package name="com.k9505.pojo"/>
+    </typeAliases>
+
+</configuration>

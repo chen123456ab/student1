@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<!-- 生成配置文件 -->
+<generatorConfiguration>
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <!--分页插件-->
+        <plugin type="com.itfsw.mybatis.generator.plugins.LimitPlugin"/>
+        <commentGenerator>
+            <!-- 是否去除注释,true表示是,false否 -->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!-- 1.连接数据库信息 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/k9505?characterEncoding=UTF-8"
+                        userId="root"
+                        password="root">
+        </jdbcConnection>
+        <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和
+        可能需要修改的部分:
+        1. 数据库连接信息
+        2. 实体类的生成路径
+        3. Sql映射文件的生成路径
+        4. Mapper接口的生成路径
+        5. 数据库表 表名 和 关联的 实体类的类名
+        3. 运行自动生成的测试方法
+        NUMERIC 类型解析为java.math.BigDecimal -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!-- 2.pojo类的生成配置 targetPackage表示目标文件夹
+        targetProject表示当前目标文件夹所放置的目标地址
+        -->
+        <javaModelGenerator targetPackage="com.k9505.pojo" targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!-- 3.sql映射文件生成配置 -->
+        <sqlMapGenerator targetPackage="mybatis/mapper" targetProject=".\src\main\resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!-- 4.mapper接口配置 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.k9505.mapper"
+                             targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+        <!-- 5.数据库表和实体类映射 -->
+        <table tableName="student" domainObjectName="Student">
+        </table>
+    </context>
+</generatorConfiguration>
